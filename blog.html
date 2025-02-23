@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Dewster Blog</title> <!-- SEO-Friendly Title -->
+    <link rel="stylesheet" href="blogcss.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header-container">
+        <div class="header">
+            <h1>Dewey's Blog</h1>
+            <div class="sidesection">
+                <p>
+                    Talking about projects, fighter jets, games that im playing, coursework, and my other niche n funny intrests. 
+                    <a href="index.html">Return to Homepage here</a>
+                </p>
+            </div>
+        </div>
+        </div>
+<div class="middle"> 
+    <div class="left"> 
+<div class="track">
+<div class="long" id="rcTrk"><p>Recent Track:</p></div> 
+<!-- sets a temp image-->
+<!--<p><img src="images/jolteon.gif" alt="" style="height: 5rem;"></p> -->
+<!-- assembles the lastfm section, sets a id to it for the section-->
+<div> 
+    <br>
+    <p><img id="acover" src="" alt=""></p><br>
+    <p id="trkInfo">info goes here</p>
+    <script src="get_lastfm.js"></script>
+</div> 
+<p>Info Via<a href="https://www.last.fm/user/dew_ey"> last.fm</a></p>
+</div> <!-- div to exit the track box-->
+<!-- title bar for entry list-->
+<div class="nav">
+    <div class="long"><p>Entries</p></div>
+    <div class="scroll">
+        <!-- remember to place entries for blog into here refrencing its #id!!-->
+        <a href="#firstEnt">First entry</a>
+    </div>
+</div>
+</div> 
+<!-- Center Main Area Content-->
+<div class="right">
+    <!-- new entries should go above the first one so that would be below this line here-->
+    <div class="entrywrapper" id="firstEnt">
+        <div class="tab">
+            <div class="tab2"><h3>2/22/2025</h3></div>
+        </div>
+        <div class="entry">
+            <h4>First post in the blog</h4>
+            <i>website development, hosting, this and that</i>
+            <p> Welcome to the very first entry in my blog, I've been planning on making a webpage and finding a way of securely hosting it.
+                So this is sorta the braindump talking about my experiences, trobules, and overall learning in the process so far.
+            </p>
+            <p>This is the second page that ive made when it comes to my website, and I wanted to branch out to using a different design compared to the first page, the homepage,
+                this one I tried to go for more of a web2 vibe that I remember from my childhood. So it was a good re-learning in good ol blocky design and css gruntwork that I did
+                back in my webdev class in my junior year of college two years ago now (man I feel old).<br>
+                <img src="images/oldaf.gif" alt="" style="width: 75px; height: 75px;">
+            </p>
+            <p>Enough rambling.</p>
+            <p>This has been a really enjoyable project so far, I've totally learned how much I "Love" css. But I know that boradning my skills in general is a great overall
+                practice.<br>
+                The biggest struggle so in the creation of this blog page blog section? was the Recent Track section to the left. That section there took like two days of
+                troubleshooting, asking questions, and testing. Due to the fact that at the time of this blogpost being written the webpage isn't yet there was issues regarding CORS
+                which was leading to no info being sent to me after my constructed get request. I figure ill be able to remove it once it goes live, but for now Ill enjoy the blissful 
+                workaround that I found <a href="https://cors-anywhere.herokuapp.com/corsdemo">here</a>.
+            </p>
+        </div>
+    </div>
+    <!-- end of firstentry div-->
+</div> <!-- outside of this is to rightside -->
+</body>
+</html>
+<!--
+⠐⣶⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣷⠀
+⠀⠸⡏⠙⠦⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣠⠖⠋⣸⠃⠀
+⠀⠀⢻⠀⠀⠈⢳⡀⠀⠀⠀⢨⢢⠀⢠⠞⠁⠀⢠⡏⠀⠀
+⠀⠀⠈⣧⠀⠀⠀⢻⡀⡠⠔⠊⠀⢣⡏⠀⠀⠀⡾⠀⠀⠀
+⠀⠀⠀⠈⠓⠦⣴⣼⡏⠀⠀⠀⢠⣾⣤⣤⠶⠛⠁⢀⣿⠀
+⠀⠀⠀⠀⠀⣶⠟⢻⣿⣦⣀⣤⣾⣿⡏⠙⢲⠀⠀⣾⣿⡇
+⠀⠀⠀⠀⣸⠃⠀⢀⠀⢹⣿⣿⠃⢀⡇⠀⠘⣶⣶⣿⣿⠇
+⠀⠀⠀⠀⢰⠀⠀⠈⠻⣿⣯⣿⡿⠟⠁⠀⠀⣿⣿⣿⡿⠀
+⠀⠀⠀⠀⠙⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣽⣿⣿⣄⠀
+⠀⠀⠀⠀⠀⢺⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⡟⠁⠀
+⠀⠀⠀⠀⠀⠀⠈⣿⣦⣴⣴⣤⣶⣤⣾⣿⣿⣿⣿⡁⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⡿⣿⠟⠋⠉⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠺⠿⢿⣿⠏⠻⣿⡿⠿⠇⠀⠀⠀⠀⠀⠀-->
