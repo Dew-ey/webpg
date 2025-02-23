@@ -1,7 +1,7 @@
 // Program grabbs info from the webpage found at .get to grab info of the currently listenign music
 username="dew_ey"; // store the username for my account
 //https://cors-anywhere.herokuapp.com add to .get when running locally
-$.get("/http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=" + username + "&api_key=b351dcf032e939ce77409e20f9ed86c5&format=json", function( data ){
+$.get("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=" + username + "&api_key=b351dcf032e939ce77409e20f9ed86c5&format=json", function( data ){
         artist=data.recenttracks.track[0].artist["#text"]; // gets the artist in spot 0 
         //alert(artist);
         
