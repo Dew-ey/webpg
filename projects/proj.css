@@ -16,15 +16,15 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: flex;
-    flex-direction: column; /* stack header + entries vertically */
-    align-items: flex-start; /* left-align everything */
+    flex-direction: column;
+    align-items: flex-start;
     padding: var(--padding);
     min-height: 100vh;
 }
 
 /* Header */
 .header {
-  margin-bottom: 2rem; /* space between header and entries */
+    margin-bottom: 2rem;
 }
 
 .headline {
@@ -67,14 +67,29 @@ body {
     .dot { animation: none; opacity: 1; }
 }
 
-/* Entries */
+/* Entries container */
 .entries-container {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem; /* vertical spacing */
+    gap: 0.75rem;
     width: 100%;
 }
 
+/* Parent entry stacks row + subentries vertically */
+.parent-entry {
+    display: flex;
+    flex-direction: column; /* parent stacks row + subentries */
+    gap: 0.25rem;
+}
+
+/* Row containing main entry title/dots/date */
+.entry-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+}
+
+/* Individual entry layout (applies to subentries as well) */
 .entry {
     display: flex;
     align-items: center;
@@ -83,16 +98,18 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-/* Hover effect: italicize title and date */
+/* Hover italics */
 .entry:hover .entry-title,
 .entry:hover .entry-date {
     font-style: italic;
 }
 
+/* Entry text */
 .entry-title {
     white-space: nowrap;
 }
 
+/* Dotted lines */
 .entry-dots {
     flex: 0 0 20vw;
     border-bottom: 1px dotted var(--fg);
@@ -106,4 +123,27 @@ body {
     font-size: 0.85em;
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
+}
+
+/* Subentries container */
+.sub-entries {
+    display: none; /* hidden until parent clicked */
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-left: 1.5rem; /* indent subentries */
+}
+
+/* Subentry individual layout */
+.sub-entry {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+/* Hover effect for subentry */
+.sub-entry:hover .entry-title,
+.sub-entry:hover .entry-date {
+    font-style: italic;
+    opacity: 1;
 }

@@ -2,36 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-        <title>Projects</title> <!-- SEO-Friendly Title -->
-        <link rel="stylesheet" href="proj.css">
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="proj.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Markdown parser -->
+    <title>Projects</title>
 </head>
 <body>
     <header class="header">
         <h1 class="headline">Projects and Writeups
             <span class="dots" aria-hidden="true">
-            <!--Refrence the dot class from the css-->
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </span>
         </h1>
-        <main class="entries-container">
-            <div class="entry">
-                <span class="entry-title">Writeups</span>
-                <span class="entry-dots"></span>
-                <span class="entry-date">27/10/2025</span>
-            </div>
-            <div class="entry">
-                <span class="entry-title">Projects</span>
-                <span class="entry-dots"></span>
-                <span class="entry-date">27/10/2025</span>
-            </div>
-        </main>
     </header>
+
+    <main class="entries-container">
+    <div class="entry parent-entry">
+        <!-- Row for main entry -->
+        <div class="entry-row">
+            <span class="entry-title">Writeups</span>
+            <span class="entry-dots"></span>
+            <span class="entry-date">27/10/2025</span>
+        </div>
+
+        <!-- Subentries hidden by default -->
+        <div class="sub-entries">
+            <div class="entry sub-entry" data-file="example.md">
+                <span class="entry-title">Writeup 1</span>
+                <span class="entry-dots"></span>
+                <span class="entry-date">Oct 2025</span>
+            </div>
+            <div class="entry sub-entry" data-file="writeup2.md">
+                <span class="entry-title">Writeup 2</span>
+                <span class="entry-dots"></span>
+                <span class="entry-date">Oct 2025</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry parent-entry">
+        <div class="entry-row">
+            <span class="entry-title">Projects</span>
+            <span class="entry-dots"></span>
+            <span class="entry-date">27/10/2025</span>
+        </div>
+
+        <div class="sub-entries">
+            <div class="entry sub-entry" data-file="project1.md">
+                <span class="entry-title">Project 1</span>
+                <span class="entry-dots"></span>
+                <span class="entry-date">Oct 2025</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <!-- Markdown display area -->
+    <div id="md-display" style="margin-top:2rem; color:white; font-family:Consolas, monospace;"></div>
+
+    <script src="proj.js"></script>
 </body>
 </html>
