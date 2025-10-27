@@ -8,10 +8,6 @@
     --padding: 1.5rem;
 }
 
-html, body {
-    height: 100%;
-}
-
 body {
     margin: 0;
     background: var(--bg);
@@ -19,33 +15,24 @@ body {
     font-family: Consolas, monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-/* Container to hold main title + offset content */
-.header {
-    position: absolute;
-    top: var(--padding);
-    left: var(--padding);
     display: flex;
-    align-items: flex-start;
-    gap: 1.5rem; /* space to the right for your smaller text */
+    flex-direction: column; /* stack header + entries vertically */
+    align-items: flex-start; /* left-align everything */
+    padding: var(--padding);
+    min-height: 100vh;
 }
 
-/* Projects and Writeups text */
+/* Header */
+.header {
+  margin-bottom: 2rem; /* space between header and entries */
+}
+
 .headline {
     font-size: var(--headline-size);
     font-weight: 600;
-    letter-spacing: 0.01em;
     display: flex;
     align-items: center;
     gap: 0.5ch;
-}
-
-/* Smaller text block to the right */
-.subtext {
-    font-size: 0.75em;
-    opacity: 0.85;
-    margin-top: 0.3em;
 }
 
 /* Dots animation */
@@ -78,4 +65,45 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     .dot { animation: none; opacity: 1; }
+}
+
+/* Entries */
+.entries-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* vertical spacing */
+    width: 100%;
+}
+
+.entry {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    max-width: 600px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect: italicize title and date */
+.entry:hover .entry-title,
+.entry:hover .entry-date {
+    font-style: italic;
+}
+
+.entry-title {
+    white-space: nowrap;
+}
+
+.entry-dots {
+    flex: 0 0 20vw;
+    border-bottom: 1px dotted var(--fg);
+    margin: 0 0.75rem;
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+}
+
+.entry-date {
+    white-space: nowrap;
+    font-size: 0.85em;
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
 }
