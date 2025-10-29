@@ -1,12 +1,12 @@
-#h1 Pico CTF Challenges
+# Pico CTF Challenges
 Challenges that I have done in the last few days, these are all easy challenges meant to brush up on skills.
 
-#h2 Riddle Registry
-#h3 Description
+## Riddle Registry
+### Description
 Hi, intrepid investigator! 📄🔍 You've stumbled upon a peculiar PDF filled with what seems like nothing more than garbled nonsense. But beware! Not everything is as it appears. Amidst the chaos lies a hidden treasure—an elusive flag waiting to be uncovered.
 Find the PDF file here Hidden Confidential Document and uncover the flag within the metadata.
 
-#h3 Procedure
+### Procedure
 - First thing I do is read through the main text in the pdf, its a basic document with some hidden text, not much I can do with this. 
 - Second course of action is to download the pdf and then open it in google so I can see the metadata
 - Opening up the document properties in google I can see this information
