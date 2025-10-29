@@ -10,7 +10,9 @@ Find the PDF file here Hidden Confidential Document and uncover the flag within 
 - First thing I do is read through the main text in the pdf, its a basic document with some hidden text, not much I can do with this. 
 - Second course of action is to download the pdf and then open it in google so I can see the metadata
 - Opening up the document properties in google I can see this information
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/RIDDLEREG/img1.jpg "image1")
+
 - Looking like it was made using pypdf, I’ll make note of that for later in case I need it. 
 - Copying the information I get from the author, it looks like something I’ve seen before…
   - cGljb0NURntwdXp6bDNkX20zdGFkYXRhX2YwdW5kIV8zNTc4NzM5YX0=
@@ -41,7 +43,9 @@ Download the jpg image and reads its metadata
 
 ### Procedure
 - First course of action is to download the image
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/hplainsight/sample.png "image2")
+
 So It can be best assumed that the flag is somewhere in the image metadata. So I am going to use a tool build into kali called exiftool which can be used to extract the metadata from images. With the following command
 `exiftool img.jpg`
 Running the command gives me the image metadata, here in the metadata I find a comment with a value of `c3RlZ2hpZGU6Y0VGNmVuZHZjbVE9` so I plug this information into cyberchef using base64 decode and get `steghide:cEF6endvcmQ=` this I can assume is the steghide command to hide something inside of the picture
@@ -63,7 +67,9 @@ The command I will use looks like this
 This above section was a dead end, going back and reviewing the hint made me feel like a fool
 I ran this instead as I am looking for an image `base64 -d logs.txt > output.jpg`
 This is the image that was outputted:
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/flagINframe/unnamed.png "image3")
+
 This image has a string of numbers and letters inside of it, extracting this we get: `7069636F4354467B666F72656E736963735F616E616C797369735F69735F616D617A696E675F32346431363839357D`
 converting the above from hex we get the flag:
 `picoCTF{forensics_analysis_is_amazing_24d16895}`
@@ -82,7 +88,9 @@ The return gives us this
 NOTE: Jack - temporary bypass: use header "X-Dev-Access: yes"
 So this tells us we will need to add the header X-Dev-Access: yes would allow us to enter the site using this as its password
 Setting it up in brupsuiete we are able to grab our flag 
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/crackGate/burp.png "image4")
+
 `picoCTF{brut4_f0rc4_83812a02}`
 
 ## Corrupted File
@@ -90,11 +98,15 @@ Setting it up in brupsuiete we are able to grab our flag
 This file seems broken... or is it? Maybe a couple of bytes could make all the difference. Can you figure out how to bring it back to life? Download the file here.
 ### Procedure
 Looking at the header for the file we can see JFIF, meaning this file is a .JPEG, 
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/corruptedFile/fileHead.png "image5")
+
 Opening it in XXD I also notice that the start of the file is missing a portion of the JPEG magic codes which are `FF D8 FF E0` Applying this code to the front of it should allow us to fix it
 Running this command which fixes the broken bytes should allow us to open the image `(printf '\xff\xd8' && tail -c +3 file) > repair.jpg`
 Seen below
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/corruptedFile/flag.png "image6")
+
 Inside of the image the flag can be found
 `picoCTF{r3st0r1ng_th3_by73s_1512b52a}`
 
@@ -119,22 +131,32 @@ Additional details will be available after launching your challenge instance.
 The challenge begins with an nc instance that I need to connect to using the command 
 `nc verbal-sleep.picoctf.net 63363`
 When I connect I am presented with this screen:
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/hashCrack/img1.png "image7")
+
 So the first thing I want to do is determine what kind of hash this is. So using hash identifier in kali i attempt to determine its type:
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/hashCrack/hashID1.png "image8")
+
 Running the command HashID says that it is most likely a MD5 hash, md5 is a very vulnerable algorithm so I should be able to crack this hash very simply.
 Going to the md5 hash checking page found at https://passwordrecovery.io/md5/ and plugging in my hash I find the answer to be `password123`
 Entering the password I am presented with another hash to solve, so the first course of action is to id it:
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/hashCrack/hashID2.png "image9")
+
 So assuming its a SHA-1 I need to find a way to crack it. So I plug this hash into first a .txt file using echo:
 `echo <hash> >> hash2.txt` 
 From there I then run the program using John referencing the rockyou wordlist, doing so presents me my second hashed password.
 The command that I will be using is `john --wordlist=/usr/share/wordlists/rockyou.txt --format=raw-SHA1 hash2.txt`
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/hashCrack/john1.png "image0")
+
 John has found the password to be `letmein`
 I am met with yet another hash that needs to be cracked, this one being: `916e8c4f79b25028c9e467f1eb8eee6d6bbdff965f9928310ad30a8d88697745`
 So running hashID to determine its type gives me: SHA-256 or Haval-256, im going to assume that it is sha 256. So I will be running basically the same john command as above to crack this last one just simply changing the type of hasing it's using.
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/hashCrack/john2.png "image11")
+
 John outputs what I hope to be my final needed password: `querty098`
 With the inputting of the last password I get the flag: 
 `picoCTF{UseStr0nG_h@shEs_&PaSswDs!_4c95d69f}`
@@ -147,8 +169,12 @@ People keep trying to trick my players with imitation flags. I want to make sure
   To decrypt the file once you've verified the hash, run `./decrypt.sh files/<file>`.
 ### Procedure
 First thing I do is connect to the provided ssh, then I run a ls to find my local files. Here i find, checksum.txt, decrypt.sh, and files. Navigating to the files directory I find well, alot of files. 
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/verify/files.png "image12")
+
 From here I run the command `sha256sum files/* | grep “checksum”` This command can be broken down into its two parts, the first part grabs the sha256 sum of all the files in the directory files, since hashes will always be the same if its the same file I can simply grep the listed options searching for the correct checksum. Doing this gives me the output of the correct file: 
+
 ![alt text](https://raw.githubusercontent.com/Dew-ey/Writeups/main/StoredImages/EZPICO/verify/identifiedSUM.png "image12")
+
 From here I run the decrypt script and get the flag: `./decrypt.sh files/451fd69b`
 Flag: `picoCTF{trust_but_verify_451fd69b}`
