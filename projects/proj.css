@@ -147,3 +147,12 @@ body {
     font-style: italic;
     opacity: 1;
 }
+
+/* Make images block-level and add vertical spacing */
+#md-display img,
+.markdown img {
+    display: block;
+    margin: 1rem 0;
+    max-width: 100%;      /* keeps images responsive */
+    height: auto;
+}
